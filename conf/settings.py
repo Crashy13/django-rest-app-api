@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # local
+    'frontend.apps.FrontendConfig',
     'api.apps.ApiConfig',
     'menu.apps.MenuConfig'
 ]
@@ -135,3 +136,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend/react-restaurant-app')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'frontend/react-restaurant-app/build/static'),
+)
