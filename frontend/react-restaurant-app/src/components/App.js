@@ -25,11 +25,6 @@ class App extends Component {
     this.removeItemFromOrder = this.removeItemFromOrder.bind(this);
   }
 
-  componentDidMount() {
-    fetch('/api/v1/menu/')
-      .then(response => response.json())
-      .then(data => this.setState({ items: data }));
-  }
 
   addItemToOrder(item){
     const order = [...this.state.order];
@@ -73,6 +68,8 @@ class App extends Component {
     )
   }
 }
+
+
 
 
 export default App;
