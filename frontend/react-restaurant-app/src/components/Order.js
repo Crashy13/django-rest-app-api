@@ -1,5 +1,5 @@
 import React from 'react';
-import Cookies from 'js-cookie';
+
 import './App.css'
 
 class Order extends React.Component {
@@ -9,19 +9,11 @@ class Order extends React.Component {
     this.state = {
       orders: [],
       customer: '',
-      name: '',
-      price: '',
     }
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-  }
-
-  componentDidMount() {
-    fetch('/api/v1/order')
-      .then(response => response.json())
-      .then(data => this.setState({ orders: data }))
   }
 
   handleInput(e) {
@@ -30,27 +22,9 @@ class Order extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    const order = {
-      customer: this.state.customer,
-      name: this.state.name,
-      price: this.state.price,
-    };
-
-    const options = {
-      method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': Cookies.get('csrftoken'),
-        },
-        body: JSON.stringify(order),
-    }
-
-    fetch('/api/v1/order/', options)
-      .then(response => response.json())
-      .then(data => console.log(data));
+    this.props.submitOrder(this.state.items);
+    this.setState({items: ''});
   }
-
 
   render() {
     const orderItems = this.props.order.map((item, index) => (
@@ -70,8 +44,8 @@ class Order extends React.Component {
         <ul>{orderItems}</ul>
         <p>Subtotal: ${subtotal}</p>
         <form onSubmit={this.handleSubmit}>
-        <input type="text" name="customer" value={this.state.customer} onChange={this.handleInput}/>
-        <button type="submit">Submit Order</button>
+          <input type="text" name="customer" value={this.state.customer} onChange={this.handleInput}/>
+          <button type="submit">Submit Order</button>
         </form>
       </>
     )
