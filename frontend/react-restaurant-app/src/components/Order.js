@@ -8,11 +8,13 @@ class Order extends React.Component {
     super(props);
     this.state = {
       orders: [],
+      customer: '',
       name: '',
       price: '',
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
@@ -22,10 +24,15 @@ class Order extends React.Component {
       .then(data => this.setState({ orders: data }))
   }
 
+  handleInput(e) {
+    this.setState({[e.target.name]: e.target.value});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
     const order = {
+      customer: this.state.customer,
       name: this.state.name,
       price: this.state.price,
     };
@@ -62,7 +69,10 @@ class Order extends React.Component {
         <h2>Order</h2>
         <ul>{orderItems}</ul>
         <p>Subtotal: ${subtotal}</p>
-        <button onSubmit={this.handleSubmit} type="submit">Submit Order</button>
+        <form onSubmit={this.handleSubmit}>
+        <input type="text" name="customer" value={this.state.customer} onChange={this.handleInput}/>
+        <button type="submit">Submit Order</button>
+        </form>
       </>
     )
   }
