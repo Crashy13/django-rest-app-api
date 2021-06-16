@@ -1,0 +1,63 @@
+.navbar {
+  display: flex;
+  background: #3A5791;
+}
+
+.navbar > * {
+  margin: 10px 50px
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #3A5791;
+  background: #211D25;
+  height: 100px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.category {
+  text-align: center;
+  color: #FFF;
+  background: #3A5791;
+  margin: 0;
+}
+
+.itemname {
+  color: #FFF;
+  background: #211D25;
+  margin: 0
+}
+
+.itemdesc {
+  color: #FFF;
+  background: #211D25;
+  margin: 0
+}
+
+.itemprice {
+  color: #FFF;
+  background: #211D25;
+  margin: 0
+
+}
+
+.order {
+  color: #FFF;
+  background: #211D25;
+}
+
+.navName {
+  color: #FFF;
+}
+
+.order {
+  text-align: center;
+}
