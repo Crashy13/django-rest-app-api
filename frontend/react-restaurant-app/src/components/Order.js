@@ -1,6 +1,6 @@
 import React from 'react';
 import Cookies from 'js-cookie';
-import './App.css';
+import './App.css'
 
 class Order extends React.Component {
 
@@ -11,6 +11,7 @@ class Order extends React.Component {
       name: '',
       price: '',
     }
+
     this.handleSubmit = this.handleSubmit.bind(this)
 
   }
@@ -45,11 +46,11 @@ class Order extends React.Component {
 
 
   render() {
-    const orderItems = this.props.order.map(order => (
-      <li key={order.id}>
-        <p>{order.name}</p>
-        <p>${order.price}</p>
-        <button onClick={() => this.props.removeItemFromOrder(order.name)}>Remove</button>
+    const orderItems = this.props.order.map((item, index) => (
+      <li>
+        <p>{item.name}</p>
+        <p>${item.price}</p>
+        <button onClick={() => this.props.removeItemFromOrder(item.name)}>Remove</button>
       </li>
     ));
 
@@ -61,9 +62,7 @@ class Order extends React.Component {
         <h2>Order</h2>
         <ul>{orderItems}</ul>
         <p>Subtotal: ${subtotal}</p>
-        <form onSubmit={this.handleSubmit}>
-        <button type="submit">Submit Order</button>
-        </form>
+        <button onSubmit={this.handleSubmit} type="submit">Submit Order</button>
       </>
     )
   }
