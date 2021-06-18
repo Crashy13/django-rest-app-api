@@ -8,7 +8,6 @@ class Order extends React.Component {
     super(props);
     this.state = {
       orders: [],
-      customer: '',
     }
 
     this.handleInput = this.handleInput.bind(this);
@@ -44,7 +43,7 @@ class Order extends React.Component {
         <ul>{orderItems}</ul>
         <p>Subtotal: ${subtotal}</p>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" name="customer" value={this.state.customer} onChange={this.handleInput}/>
+          <input type="text" placeholder="Please enter your name" name="customer" value={this.state.customer} onChange={this.handleInput}/>
           <button type="submit">Submit Order</button>
         </form>
       </>

@@ -12,7 +12,7 @@ class MenuList extends Component {
     const items = this.props.items
       .filter(item => item.category === category)
       .map((item, index) => (
-        <MenuItem key={item.name} item={item} addItemToOrder={this.props.addItemToOrder}/>
+        <MenuItem key={item.id} item={item} addItemToOrder={this.props.addItemToOrder}/>
       ));
 
       return (
