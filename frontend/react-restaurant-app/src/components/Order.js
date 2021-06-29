@@ -7,7 +7,7 @@ class Order extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      orders: [],
+      customer: "",
     }
 
     this.handleInput = this.handleInput.bind(this);
@@ -21,8 +21,8 @@ class Order extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.submitOrder(this.state.items);
-    this.setState({items: ''});
+    this.props.submitOrder(this.state.customer);
+    this.setState({customer: ''});
   }
 
   render() {
